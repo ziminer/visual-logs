@@ -1,0 +1,11 @@
+---
+- hosts: all
+  sudo: yes
+
+  roles:
+    - openjdk7
+    - elasticsearch
+    - nginx
+    - unzip
+    - kibana
+    - logstash

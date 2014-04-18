@@ -1,0 +1,14 @@
+- name: fetch elasticsearch
+  get_url: url={{ elasticsearch_url }}-{{ elasticsearch_version }}.deb dest=/tmp/elasticsearch-{{ elasticsearch_version }}.deb
+
+- name: install elasticsearch
+  command: dpkg -i --skip-same-version /tmp/elasticsearch-{{ elasticsearch_version }}.deb
+  register: dpkg_result
+  changed_when: "dpkg_result.stdout.startswith('Selecting')"
+  notify:
+    - restart elasticsearch
+
+- name: set elastic search to start by default
+  command: update-rc.d elasticsearch defaults 95 10
+  when: "dpkg_result.stdout.startswith('Selecting')"
+  

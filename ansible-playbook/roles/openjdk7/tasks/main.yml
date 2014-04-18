@@ -1,0 +1,2 @@
+- name: install openjdk
+  apt: pkg="openjdk-7-jre" update_cache=yes cache_valid_time=3600

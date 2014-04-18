@@ -1,0 +1,4 @@
+- name: install nginx
+  apt: pkg="nginx" update_cache=yes cache_valid_time=3600
+  notify:
+    - restart nginx

@@ -1,0 +1,2 @@
+logstash_url: "https://download.elasticsearch.org/logstash/logstash/logstash"
+logstash_version: "1.4.0"

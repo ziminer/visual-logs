@@ -1,0 +1,10 @@
+- name: fetch kibana
+  get_url: url=http://download.elasticsearch.org/kibana/kibana/kibana-latest.zip dest=/tmp/kibana-latest.zip
+
+- name: install kibana
+  command: unzip -o /tmp/kibana-latest.zip -d /usr/share/nginx/
+
+- name: inject kibana into nginx
+  command: sed -i 's/root \/usr\/share\/nginx\/www/root \/usr\/share\/nginx\/kibana-latest/g' /etc/nginx/sites-available/default
+  notify:
+    - restart nginx
