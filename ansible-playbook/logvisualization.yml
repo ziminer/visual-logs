@@ -5,6 +5,7 @@
   roles:
     - openjdk7
     - elasticsearch
+    - curl
     - nginx
     - unzip
     - kibana

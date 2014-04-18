@@ -4,6 +4,13 @@
 - name: install logstash
   register: logstash_untar
   command: tar -xzf /tmp/logstash-{{ logstash_version }}.tar.gz -C /home/vagrant
+
+- name: move logstash to target directory
+  command: mv /home/vagrant/logstash-{{ logstash_version }} {{ logstash_dest }}
+  when: logstash_untar.rc == 0
   
 - name: upload logstash configs
   copy: src=logstash.conf dest=/home/vagrant/logstash.conf
+
+- name: upload logstash control script
+  copy: src=startlogstash dest=/usr/bin/startlogstash

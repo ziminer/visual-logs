@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rm ~/.sincedb*;/usr/share/logstash/bin/logstash -f /home/vagrant/logstash.conf

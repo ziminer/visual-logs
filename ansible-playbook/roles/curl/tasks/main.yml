@@ -1,0 +1,2 @@
+- name: install curl
+  apt: pkg="curl" update_cache=yes cache_valid_time=3600
